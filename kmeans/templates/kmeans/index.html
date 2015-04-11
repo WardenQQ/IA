@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>D3 Test</title>
+        <script type="text/javascript" src="d3/d3.v3.js"></script>
+    </head>
+    <body>
+    	<form action="{% url 'scatterplot' %}" method="post">
+    	{% csrf_token %}
+    		<label>
+    			<input type="number" min="0" max="100" name="k">
+    			Nombre de classes de comportement à extraire
+    		</label>
+    		<label>
+    			<input type="number" min="0" max="100" name="n">
+    			% de comportements en marge de chaque classe
+    		</label>
+    		<label>
+    			<input type="number" min="0" max="100" name="n">
+    			% d'observation à afficher
+    		</label>
+    	{% for i in columns %}
+    		<label>
+    			<input type="checkbox" value="{{ i.0 }}" name="columns[]">
+    			{{ i.1 }}
+    		</label>
+    	{% endfor %}
+    		<input type="submit" value="Calculer">
+    	</form>
+        <script type="text/javascript">
+            // Your beautiful D3 code will go here
+        </script>
+    </body>
+</html>
